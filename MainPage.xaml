@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyContacts.MainPage"
+             Loaded="ContentPage_Loaded">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Ekle"   
+                     Order="Primary" 
+                     Clicked="AddContactEvent"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <SearchBar Placeholder="Arama"
+                   TextChanged="OnSearchTextChanged" />
+
+        <ScrollView>
+
+            <CollectionView x:Name="listContacts" 
+                        SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            <!-- Swipe Menu -->
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Düzenle" 
+                                           BackgroundColor="LightBlue" 
+                                           Clicked="EditContactEvent"
+                                           CommandParameter="{Binding Id}" />
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <SwipeView.RightItems>
+                                <SwipeItem Text="Sil" 
+                                           BackgroundColor="Red" 
+                                       Clicked="DeleteContactEvent"
+                                           CommandParameter="{Binding Id}" />
+                            </SwipeView.RightItems>
+                            <Border Margin="10,3" Padding="10">
+                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                    <!-- Image Section -->
+                                    <Image Source="{Binding Image}"
+                                   WidthRequest="50" 
+                                   HeightRequest="50"
+                                   Aspect="AspectFill" />
+
+                                    <!-- Text Section -->
+                                    <StackLayout Orientation="Vertical" VerticalOptions="Center" >
+                                        <Label Text="{Binding FullName}" 
+                                       FontAttributes="Bold" 
+                                       FontSize="16" />
+                                        <Label Text="{Binding Phone}" 
+                                       FontSize="14" 
+                                       TextColor="Gray" />
+                                        <Label Text="{Binding Mail}" 
+                                       FontSize="14" 
+                                       TextColor="Gray" />
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                                <FlyoutBase.ContextFlyout>
+                                    <MenuFlyout>
+                                        <MenuFlyoutItem 
+                                        Text="Düzenle"
+                                        Clicked="EditContactEvent"
+                                        CommandParameter="{Binding Id}"/>
+
+
+                                        <MenuFlyoutItem 
+                                        Text="Sil"
+                                        Clicked="DeleteContactEvent"
+                                        CommandParameter="{Binding Id}"/>
+                                    </MenuFlyout>
+                                </FlyoutBase.ContextFlyout>
+                            </Border>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </ScrollView>
+    </StackLayout>
+
+</ContentPage>

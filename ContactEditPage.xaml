@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyContacts.ContactEditPage"
+             Title="ContactEditPage">
+    
+    <VerticalStackLayout VerticalOptions="Start">
+        <Border Background="Transparent">
+            <StackLayout>
+
+                <Image HeightRequest="200" 
+                       Source="{Binding Image}"/>
+
+                <HorizontalStackLayout HorizontalOptions="Center">
+
+                    <Button 
+                    BackgroundColor="Transparent"
+                    TextColor="Blue"
+                    Text="Resim Ekle"
+                    Clicked="AddImageClicked"
+                    />
+                    <Button BackgroundColor="Transparent"
+                            Text="Kaldır" 
+                            TextColor="Blue"
+                            Clicked="DeleteImageClicked"
+                            />
+                </HorizontalStackLayout>
+            </StackLayout>
+        </Border>
+
+        <Label Text="Adı"/>
+        <Entry Placeholder="Adı" 
+               Text="{Binding Name}"/>
+
+        <Label Text="Soyadı"/>
+        <Entry Placeholder="Soyadı" 
+               Text="{Binding Surname}"/>
+
+        <Label Text="Telefon"/>
+        <Entry Placeholder="Telefon" Keyboard="Telephone" 
+               Text="{Binding Phone}"/>
+
+        <Label Text="Mail"/>
+        <Entry Placeholder="Mail" Keyboard="Email"
+               Text="{Binding Mail}"/>
+
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+            <Button Text="Tamam" WidthRequest="120"
+                    Clicked="OkClicked" />
+            <Button Text="İptal" WidthRequest="120" 
+                    Clicked="CancelClicked"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyContacts.LoginPage"
+             Title="LoginPage">
+    <VerticalStackLayout VerticalOptions="Center">
+        <Border >
+            <Grid Margin="20">
+                <StackLayout>
+
+                    <StackLayout x:Name="loginStack" Spacing="10">
+                        <Entry x:Name="lEmail"    Placeholder="Email" Keyboard="Email" />
+                        <Entry x:Name="lPassword" Placeholder="Password" IsPassword="True" />
+
+                        <Button Text="Oturum Aç" Clicked="Login_Clicked"/>
+                        <Button Text="Hesabım yok" Clicked="Reg_Clicked" BackgroundColor="Transparent"  TextColor="Black"/>
+                    </StackLayout>
+
+                    <StackLayout x:Name="registerStack" IsVisible="False"  Spacing="10">
+                        <Entry x:Name="rDispName" Placeholder="DisplayName" />
+                        <Entry x:Name="rEmail"    Placeholder="Email" Keyboard="Email" />
+                        <Entry x:Name="rPassword" Placeholder="Password" IsPassword="True" />
+
+                        <Button Text="Kayıt ol" Clicked="Register_Clicked"/>
+                        <Button Text="Hesabım var" Clicked="Reg_Clicked" BackgroundColor="Transparent"  TextColor="Black"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Border>
+    </VerticalStackLayout>
+</ContentPage>
